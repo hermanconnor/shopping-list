@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="main.js"></script>
+    <title>Shopping List</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <header>
+          <img src="images/wish-list.webp" alt="Shopping List" />
+          <h1>Shopping List</h1>
+        </header>
+        <!-- ITEM INPUT FORM -->
+        <form id="item-form">
+          <div class="form-control">
+            <label for="item-input" class="sr-only">Enter Item</label>
+            <input
+              id="item-input"
+              name="item"
+              type="text"
+              placeholder="Enter Item"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-control">
+            <button type="submit" class="btn">
+              <i class="fa-solid fa-plus"></i> Add Item
+            </button>
+          </div>
+        </form>
+        <!-- SEARCH FILTER -->
+        <div class="filter">
+          <label for="filter" class="sr-only">Search for item</label>
+          <input
+            id="filter"
+            name="filter"
+            type="text"
+            placeholder="Search..."
+            class="form-input-filter"
+          />
+        </div>
+
+        <!-- ITEM LIST -->
+        <ul id="item-list" class="items">
+          <!-- <li>
+            Apples
+            <button class="remove-item btn-link text-red">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+          <li>
+            Orange Juice
+            <button class="remove-item btn-link text-red">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+          <li>
+            Oreos
+            <button class="remove-item btn-link text-red">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+          <li>
+            Milk
+            <button class="remove-item btn-link text-red">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li> -->
+        </ul>
+
+        <button id="clear" type="button" class="btn-clear">Clear All</button>
+      </div>
+    </main>
+  </body>
+</html>
