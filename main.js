@@ -14,18 +14,40 @@ const initApp = () => {
 
     if (!newItem) return;
 
+    renderItem(newItem);
+  }
+
+  // RENDER ITEM
+  function renderItem(item) {
     const li = document.createElement('li');
-    const button = document.createElement('button');
-    const icon = document.createElement('i');
+    const button = createButton('remove-item btn-link text-red');
 
-    button.className = 'remove-item btn-link text-red';
-    icon.className = 'fa-solid fa-xmark';
-
-    button.appendChild(icon);
-    li.appendChild(document.createTextNode(newItem));
+    li.appendChild(document.createTextNode(item));
     li.appendChild(button);
 
     itemList.appendChild(li);
+  }
+
+  /**************************
+   * ::: HELPER FUNCTIONS :::
+   **************************/
+  // CREATE BUTTON
+  function createButton(className) {
+    const button = document.createElement('button');
+    const icon = createIcon('fa-solid fa-xmark');
+
+    button.className = className;
+    button.appendChild(icon);
+
+    return button;
+  }
+
+  // CREATE ICON
+  function createIcon(className) {
+    const icon = document.createElement('i');
+    icon.className = className;
+
+    return icon;
   }
 
   /**************************
