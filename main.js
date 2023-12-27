@@ -15,6 +15,8 @@ const initApp = () => {
     if (!newItem) return;
 
     renderItem(newItem);
+
+    addItemToStorage(newItem);
   }
 
   // RENDER ITEM
