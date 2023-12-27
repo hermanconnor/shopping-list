@@ -50,6 +50,28 @@ const initApp = () => {
     return icon;
   }
 
+  // ADD ITEM TO LOCALSTORAGE
+  function addItemToStorage(item) {
+    const itemsFromStorage = getItemsFromStorage();
+
+    itemsFromStorage.push(item);
+
+    localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+  }
+
+  // GET ITEMS FROM LOCALSTORAGE
+  function getItemsFromStorage() {
+    let itemsFromStorage;
+
+    if (localStorage.getItem('items') === null) {
+      itemsFromStorage = [];
+    } else {
+      itemsFromStorage = JSON.parse(localStorage.getItem('items'));
+    }
+
+    return itemsFromStorage;
+  }
+
   /**************************
    * ::: EVENT LISTENERS :::
    **************************/
