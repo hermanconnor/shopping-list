@@ -22,6 +22,27 @@ const initApp = () => {
     renderItem(newItem);
 
     addItemToStorage(newItem);
+
+    setDefaultUI();
+
+    itemForm.reset();
+  }
+
+  // DELETE ITEM
+  function deleteItem(item) {
+    if (confirm('Are you sure you want to delete this item?')) {
+      item.remove();
+
+      removeItemFromStorage(item.textContent);
+
+      setDefaultUI();
+    }
+  }
+
+  function onClickItem(e) {
+    if (e.target.parentElement.classList.contains('remove-item')) {
+      deleteItem(e.target.parentElement.parentElement);
+    }
   }
 
   // RENDER ITEM
@@ -56,13 +77,12 @@ const initApp = () => {
 
   // SET UI BACK TO DEFAULT
   function setDefaultUI() {
-    itemForm.reset();
-
     const items = itemList.querySelectorAll('li');
 
     if (!items.length) {
       clearItemsBtn.style.display = 'none';
       itemFilter.style.display = 'none';
+      localStorage.removeItem('items');
     } else {
       clearItemsBtn.style.display = 'block';
       itemFilter.style.display = 'block';
@@ -113,10 +133,21 @@ const initApp = () => {
     return itemsFromStorage;
   }
 
+  // REMOVE ITEM FROM STORAGE
+  function removeItemFromStorage(item) {
+    let itemsFromStorage = getItemsFromStorage();
+
+    itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
+
+    localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+  }
+
   /**************************
    * ::: EVENT LISTENERS :::
    **************************/
   itemForm.addEventListener('submit', addItem);
+  clearItemsBtn.addEventListener('click', clearItems);
+  itemList.addEventListener('click', onClickItem);
 };
 
 document.addEventListener('DOMContentLoaded', initApp);
