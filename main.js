@@ -8,6 +8,9 @@ const initApp = () => {
   const itemFilter = document.getElementById('filter');
   const formBtn = itemForm.querySelector('button');
 
+  // Get items from storage and display
+  displayItems();
+
   // ADD ITEM
   function addItem(e) {
     e.preventDefault();
@@ -39,6 +42,31 @@ const initApp = () => {
     }
 
     localStorage.removeItem('items');
+
+    setDefaultUI();
+  }
+
+  function displayItems() {
+    const itemsFromStorage = getItemsFromStorage();
+
+    itemsFromStorage.forEach((item) => renderItem(item));
+
+    setDefaultUI();
+  }
+
+  // SET UI BACK TO DEFAULT
+  function setDefaultUI() {
+    itemForm.reset();
+
+    const items = itemList.querySelectorAll('li');
+
+    if (!items.length) {
+      clearItemsBtn.style.display = 'none';
+      itemFilter.style.display = 'none';
+    } else {
+      clearItemsBtn.style.display = 'block';
+      itemFilter.style.display = 'block';
+    }
   }
 
   /**************************
