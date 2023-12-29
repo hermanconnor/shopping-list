@@ -1,3 +1,5 @@
+'use strict';
+
 const initApp = () => {
   const itemForm = document.getElementById('item-form');
   const itemInput = document.getElementById('item-input');
@@ -28,6 +30,15 @@ const initApp = () => {
     li.appendChild(button);
 
     itemList.appendChild(li);
+  }
+
+  // CLEAR ITEMS
+  function clearItems() {
+    while (itemList.firstChild) {
+      itemList.removeChild(itemList.firstChild);
+    }
+
+    localStorage.removeItem('items');
   }
 
   /**************************
