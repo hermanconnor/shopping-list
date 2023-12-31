@@ -124,7 +124,14 @@ const initApp = () => {
 
   // SET UI BACK TO DEFAULT
   function setDefaultUI() {
+    itemForm.reset();
+
     const items = itemList.querySelectorAll('li');
+
+    items.forEach((item) => {
+      item.style.display = 'flex';
+      item.classList.remove('edit-mode');
+    });
 
     if (!items.length) {
       clearItemsBtn.style.display = 'none';
@@ -135,9 +142,9 @@ const initApp = () => {
       itemFilter.style.display = 'block';
     }
 
+    itemFilter.value = '';
     formBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
     formBtn.style.backgroundColor = '#333';
-    itemFilter.value = '';
 
     isEditMode = false;
   }
