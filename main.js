@@ -87,6 +87,22 @@ const initApp = () => {
     itemList.appendChild(li);
   }
 
+  // FILTER ITEMS
+  function filterItems(e) {
+    const items = itemList.querySelectorAll('li');
+    const searchText = e.target.value.toLowerCase();
+
+    items.forEach((item) => {
+      const itemName = item.firstChild.textContent.toLowerCase();
+
+      if (itemName.includes(searchText)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
   // CLEAR ITEMS
   function clearItems() {
     while (itemList.firstChild) {
@@ -185,6 +201,7 @@ const initApp = () => {
   itemForm.addEventListener('submit', addItem);
   clearItemsBtn.addEventListener('click', clearItems);
   itemList.addEventListener('click', onClickItem);
+  itemFilter.addEventListener('input', filterItems);
 };
 
 document.addEventListener('DOMContentLoaded', initApp);
