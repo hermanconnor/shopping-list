@@ -20,8 +20,18 @@ const initApp = () => {
 
     if (!newItem) return;
 
+    if (checkForDuplicates(newItem)) {
+      alert('Item already exists');
+      return;
+    }
+
     if (isEditMode) {
       const itemToEdit = itemList.querySelector('.edit-mode');
+
+      if (checkForDuplicates(itemToEdit.textContent)) {
+        alert('Item already exists');
+        return;
+      }
 
       removeItemFromStorage(itemToEdit.textContent);
 
@@ -200,6 +210,11 @@ const initApp = () => {
     itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
 
     localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+  }
+
+  // CHECK FOR DUPLICATE LIST ITEMS
+  function checkForDuplicates(item) {
+    return getItemsFromStorage().includes(item);
   }
 
   /**************************
